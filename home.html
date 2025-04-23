@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dlends Project - Home</title>
+<link rel="stylesheet" href="style.css" />
+<style>
+body {
+font-family: Arial, sans-serif;
+background-image: url('images/bghome.jpeg');
+background-attachment: fixed;
+background-size: cover;
+background-position: center;
+margin: 0;
+padding: 70px;
+color: white;
+}
+
+header {
+text-align: center;
+margin-bottom: 30px;
+background-image: url('images/bgtampilan2.jpeg');
+background-size: cover;
+padding: 10px;
+border-radius: 10px;
+}
+
+h1 {
+margin: 0;
+font-size: 2.5em;
+}
+
+p {
+font-size: 1.2em;
+}
+
+main {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 20px;
+}
+
+.card {
+background: linear-gradient(135deg, rgba(24, 24, 245, 0.9), rgba(27, 37, 75, 0.9));
+color: white;
+border-radius: 10px;
+padding: 20px;
+width: 30%;
+text-align: center;
+cursor: pointer;
+transition: background-color 0.3s;
+box-shadow: 0 4px 8px rgba(232, 232, 232, 0.2);
+}
+
+.card:hover {
+background-image: linear-gradient(to right, #e2ff29, #a6ff32);
+}
+
+.output {
+margin-top: 30px;
+padding: 15px;
+background-color: rgba(255, 255, 255, 0.9);
+border-radius: 30px;
+box-shadow: 0 4px 8px rgba(243, 243, 243, 0.1);
+}
+</style>
+</head>
+<body>
+<header>
+<header id="welcome">
+<div class="welcome">
+<h1>Selamat Datang, DlendSer!</h1>
+<p>Ingin belajar program apa hari ini?</p>
+</header>
+<main class="options">
+    <div class="card" onclick="showInfoPembelian()">
+    <h2>Informasi Untuk Pembelian Produk</h2>
+    </div>
+    <div class="card" onclick="showProdukCoding()">
+    <h2>Produk Coding</h2>
+    <div id="produk-container"></div>
+    
+    </div>
+    <div class="card" onclick="showRequestProgram()">
+    <h2>Fitur Request Program</h2>
+    </div>
+
+    <div class="card" onclick="showSosialMedia()">
+    <h2>Sosial Media Dlends Project</h2>
+    </div>
+    
+    </main>
+    <section id="output" class="output"></section>
+    <script src="script.js"></script>
+    </body>
+    </html>
+
+    

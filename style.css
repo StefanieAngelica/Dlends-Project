@@ -1,0 +1,196 @@
+body, html {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: auto;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1; 
+  }
+  #bg-video {
+    pointer-events: none; 
+  }
+
+#bg-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  display: none; 
+}
+
+  .content {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   color: white;
+   text-align: center;
+   background-color: rgba(0, 0, 0, 0.5);
+   padding: 30px;
+   border-radius: 10px;
+   box-sizing: border-box;
+  }
+
+  .login-container {
+    background-color: #020202;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.696);
+    width: 300px;
+    backdrop-filter: blur(5px);
+  } 
+
+  .logo {
+    width: 155px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid rgb(17, 15, 15);
+  }
+  
+  h2 {
+    color: rgb(253, 253, 253);
+    margin-bottom: 20px;
+  }
+  
+  input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin: 25px;
+    background-color: #18a9f2;
+    color: white;
+    border: rgba(0, 0, 0, 0.801);
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .output {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255, 243, 243, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: black;
+    text-align: center;
+  }
+  
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
+    justify-items: center;
+    margin-top: 20px;
+  }
+  
+  .product-card {
+    background-color: #2184d6;
+    padding: 15px;
+    border-radius: 12px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 300px;
+    height: 200px;
+    text-align: center;
+  }
+  
+  .card:hover,
+.card:hover h2,
+.card:hover p {
+  color: black !important;
+}
+
+body.produk-bg {
+    overflow: auto;
+  background-image: url('images/bgproduk.jpeg'); 
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  position : relative;
+}
+
+#produk-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  z-index: 1;
+  position: relative;
+}
+
+.produk-card {
+  background: white;
+  color: black;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+  text-align: center;
+  min-height: 300px; 
+  position: relative;
+  z-index: 1;
+}
+
+.produk-card:hover {
+  transform: scale(1.03);
+}
+
+.produk-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.produk-card .info {
+  padding: 15px;
+}
+
+.produk-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.2em;
+}
+
+.price {
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: red;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1em;
+  z-index: 1;
+}
+
+.card {
+  position: relative;
+}
+
+.welcome {
+  background-image: url('images/bgwelcome.jpeg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  padding: 20px;
+  border-radius: 10px;
+}
+

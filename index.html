@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login ke Dlends Project</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(203, 199, 199, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+      color: white;
+    }
+
+    .login-container img.logo {
+      width: 100px;
+      margin-bottom: 20px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .login-container button {
+      width: 80%;
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      margin-left: -12px;
+      margin-right: -12px;
+    }
+
+    #loginButton {
+      background-color: #1279f0;
+    }
+
+    #registerButton {
+      background-color: rgb(255, 174, 23);
+    }
+
+    #guestLogin {
+      background-color: green;
+    }
+
+    #toggleForm {
+      margin-top: 15px;
+      background-color: #555;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="videos/animasibg.mp4" type="video/mp4" />
+  </video>
+  <img id="bg-image" src="images/background.jpeg" alt="Background Image" style="display: none;">
+
+  <div class="login-container">
+    <img src="images/dlendslogo.jpeg" alt="Dlends Logo" class="logo" />
+    <h2>LOGIN KE DLENDS PROJECT</h2>
+
+    <form id="loginForm">
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit" id="loginButton">Login with Email</button>
+    </form>
+    
+    <form id="registerForm" class="hidden">
+      <input type="email" id="registerEmail" placeholder="Email" required />
+      <input type="password" id="registerPassword" placeholder="Password" required />
+      <button type="submit" id="registerButton">Register</button>
+    </form>
+
+    <button id="guestLogin">Login as Guest</button>
+    <button id="toggleForm">Register</button>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      createUserWithEmailAndPassword
+    } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBhweey69wEQJqnjn89ALrIFf1D9qIIoJ4",
+      authDomain: "dlendslogin.firebaseapp.com",
+      projectId: "dlendslogin",
+      storageBucket: "dlendslogin.appspot.com",
+      messagingSenderId: "756570914607",
+      appId: "1:756570914607:web:fc4a3ed6fd16c5a3caebda",
+      measurementId: "G-LJFYGZL7GW"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const toggleFormButton = document.getElementById("toggleForm");
+    const guestLoginButton = document.getElementById("guestLogin");
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Login berhasil!");
+          window.location.href = "home.html";
+        })
+        .catch((error) => {
+          alert("Login gagal: " + error.message);
+        });
+    });
+
+    registerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("registerEmail").value;
+      const password = document.getElementById("registerPassword").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          alert("Pendaftaran berhasil! Silakan login.");
+          registerForm.classList.add("hidden");
+          loginForm.classList.remove("hidden");
+          toggleFormButton.textContent = "Register";
+        })
+        .catch((error) => {
+          alert("Pendaftaran gagal: " + error.message);
+        });
+    });
+
+    guestLoginButton.addEventListener("click", function () {
+      alert("Masuk sebagai Guest berhasil!");
+      window.location.href = "home.html";
+    });
+
+    toggleFormButton.addEventListener("click", function () {
+      const isRegisterVisible = !registerForm.classList.contains("hidden");
+      registerForm.classList.toggle("hidden");
+      loginForm.classList.toggle("hidden");
+      toggleFormButton.textContent = isRegisterVisible ? "Register" : "Back to Login";
+    });
+  </script>
+</body>
+</html>
